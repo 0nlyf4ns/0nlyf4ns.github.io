@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlyFans</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: url('only.png') center top no-repeat; /* Substitua 'only.png' pelo caminho correto ou URL da sua imagem */
+            background-size: 30% auto; /* Alterado para 30% da largura e altura automática */
+            transition: background-color 0s ease, opacity 0s ease;
+        }
+
+        button {
+            background-color: #0face3;
+            color: white;
+            padding: 15px 30px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.4s ease, transform 0.4s ease;
+            margin-top: 20px;
+            border: none; /* Removida a borda preta */
+        }
+
+        button:hover {
+            background-color: #0e8ecd;
+            transform: scale(1.1);
+        }
+
+        #media-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: black;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        #media-container.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        #media-container img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: auto;
+            opacity: 1;
+            transition: opacity 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <button id="profileButton" onclick="showMedia()">Acesse meu perfil!</button>
+
+    <div id="media-container">
+        <img src="https://media.tenor.com/y5KVwUHOv-0AAAAi/rei-rei-plush.gif" alt="GIF">
+        <audio id="audio" autoplay loop>
+            <source src="gangnam.mp3" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <script>
+        function showMedia() {
+            const body = document.body;
+            body.style.backgroundColor = 'black';
+
+            const mediaContainer = document.getElementById('media-container');
+            mediaContainer.classList.add('show');
+            playAudio();
+
+            const profileButton = document.getElementById('profileButton');
+            profileButton.style.display = 'none';
+        }
+
+        function closeMedia() {
+            const body = document.body;
+            body.style.backgroundColor = '';
+
+            const mediaContainer = document.getElementById('media-container');
+            mediaContainer.classList.remove('show');
+            pauseAudio();
+        }
+
+        function playAudio() {
+            const audio = document.getElementById('audio');
+            audio.play();
+        }
+
+        function pauseAudio() {
+            const audio = document.getElementById('audio');
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
+</body>
+</html>
